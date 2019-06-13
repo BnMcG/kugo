@@ -24,7 +24,7 @@ kugo -executable=helm install stable/nginx
 kugo -executable=telepresence --namespace test
 ```
 
-Note: The executable flag must be passed before the arguments you wish to pass through to the wrapped application! If the executable flag isn't specified, `kubectl` will be wrapped.
+Note: The `-executable` flag must be passed before the arguments you wish to pass through to the wrapped application! If the `-executable` flag isn't specified, `kubectl` will be wrapped.
 
 ## Shell aliases
 ### Fish
