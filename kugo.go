@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -11,6 +12,15 @@ import (
 )
 
 func main() {
+	executable := flag.String("executable", "kubectl", "Command to execute")
+	flag.Parse()
+	executableProvided := false
+	flag.Visit(func(f *flag.Flag) {
+		if f.Name == "executable" {
+			executableProvided = true
+		}
+	})
+
 	configuration, err := configuration.LoadConfiguration()
 	if err != nil {
 		log.Fatal(err)
@@ -70,7 +80,12 @@ func main() {
 		fmt.Print("[Kugo] Refreshed Kubernetes credentials...\n")
 	}
 
-	cmd := exec.Command("kubectl", os.Args[1:]...)
+	arguments := os.Args[1:]
+	if executableProvided {
+		arguments = os.Args[2:]
+	}
+
+	cmd := exec.Command(*executable, arguments...)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	err = cmd.Run()
