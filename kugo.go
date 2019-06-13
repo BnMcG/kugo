@@ -77,7 +77,9 @@ func main() {
 			log.Fatal(err)
 		}
 
-		fmt.Print("[Kugo] Refreshed Kubernetes credentials...\n")
+		fmt.Println("[Kugo] Refreshed Kubernetes credentials...")
+	} else {
+		fmt.Println("[Kugo] Current Kubernetes credentials are still valid")
 	}
 
 	arguments := os.Args[1:]
