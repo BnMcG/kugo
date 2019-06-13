@@ -3,7 +3,7 @@ Kugo is a wrapper for kubectl supporting additional authentication options. It w
 to a Kubernetes Cluster using Hashicorp Vault.
 
 ## Configuring
-Kugo is configured using a YAML file. This file must be placed at $HOME/.kugo.yaml. An example is below:
+Kugo is configured using a YAML file. This file must be placed at `$HOME/.kugo.yaml`. An example is below:
 
 ### Hashicorp Vault authentication with username/password
 ```yaml
